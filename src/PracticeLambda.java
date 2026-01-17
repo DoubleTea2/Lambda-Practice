@@ -2,9 +2,24 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PracticeLambda {
+    interface twoSumCalculator {
+        int sum(int x, int y);
+    }
+    /**
+     * Write a Java program to implement a lambda expression to find the sum of two integers.
+     *
+     * Using an interface I made a simple calculator that defined it's "sum" method.
+     * Lambda only uses functional interfaces, which is defined as an interface with one method.
+     * First impression is that this is a quick way to accomplish polymorphism, one interface to which you could define multiple methods to it
+     *
+     */
     @Test
-    public void TestingLamda() {
-        assertEquals(1, 1);
+    public void twoSum() {
+        int x = 4;
+        int y = 5;
+        twoSumCalculator lambdaFunction = ( in1,in2) -> in1 + in2;
+        int result = lambdaFunction.sum(x, y);
+        assertEquals(result , x+y);
     }
 }
 
