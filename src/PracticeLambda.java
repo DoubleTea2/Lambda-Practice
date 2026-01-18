@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Predicate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -45,6 +48,33 @@ public class PracticeLambda {
         Predicate<String> isStringEmpty = str -> str.isEmpty();
         Assertions.assertTrue(isStringEmpty.test(emptyString));
         Assertions.assertFalse(isStringEmpty.test(nonEmptyString));
+    }
+
+    /**
+     *
+     * Write a Java program to implement a lambda expression to convert a list of strings to uppercase and lowercase.
+     *
+     * This question seems to largely be about just using the for(Object: ObjectList)
+     */
+    @Test
+    public void convertListToUpperOrLowercase() {
+        ArrayList<String> inputString = new ArrayList<>(List.of("Test", "data", "LiSt"));
+        ArrayList<String> lowerCaseList = new ArrayList<>();
+        ArrayList<String> upperCaseList = new ArrayList<>();
+
+        for(String str: inputString) {
+            lowerCaseList.add(str.toLowerCase());
+        }
+
+        for(String str: inputString) {
+            upperCaseList.add(str.toUpperCase());
+        }
+
+        List<String> lowerCaseSolution = List.of("test", "data", "list");
+        List<String> upperCaseSolution = List.of("TEST", "DATA", "LIST");
+
+        Assertions.assertEquals(lowerCaseList, lowerCaseSolution);
+        Assertions.assertEquals(upperCaseList, upperCaseSolution);
     }
 
 }
