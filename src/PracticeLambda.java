@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -20,6 +21,23 @@ public class PracticeLambda {
         twoSumCalculator lambdaFunction = ( in1,in2) -> in1 + in2;
         int result = lambdaFunction.sum(x, y);
         assertEquals(result , x+y);
+    }
+
+    interface StringChecker {
+        boolean doesStringAdhere(String input);
+    }
+    /**
+     * Write a Java program to implement a lambda expression to check if a given string is empty.
+     *
+     * I'm thinking this would just be utilized the same way
+     */
+    @Test
+    public void isStringEmpty() {
+        String emptyString = "";
+        String nonEmptyString = "This isn't empty";
+        StringChecker isStringEmpty = (input) -> input.isEmpty();
+        Assertions.assertTrue(isStringEmpty.doesStringAdhere(emptyString));
+        Assertions.assertFalse(isStringEmpty.doesStringAdhere(nonEmptyString));
     }
 }
 
