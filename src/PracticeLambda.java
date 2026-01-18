@@ -1,5 +1,8 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.util.function.Predicate;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PracticeLambda {
@@ -23,22 +26,27 @@ public class PracticeLambda {
         assertEquals(result , x+y);
     }
 
-    interface StringChecker {
-        boolean doesStringAdhere(String input);
-    }
     /**
      * Write a Java program to implement a lambda expression to check if a given string is empty.
      *
      * I'm thinking this would just be utilized the same way
+     *
+     * After reviewing the answer on w3 schools, they utilized something called a Predicate.
+     * https://docs.oracle.com/javase/8/docs/api/java/util/function/Predicate.html
+     * This is a functional interface that weirdly enough has more than one function.
+     * Call test to use the assigned functionality, if you want to use Object functionality within
+     * this like .isEmpty() you need to cast the Predicate call. Predicate is a generic so it doesn't
+     * know the input will be a certain type.
      */
     @Test
     public void isStringEmpty() {
         String emptyString = "";
         String nonEmptyString = "This isn't empty";
-        StringChecker isStringEmpty = (input) -> input.isEmpty();
-        Assertions.assertTrue(isStringEmpty.doesStringAdhere(emptyString));
-        Assertions.assertFalse(isStringEmpty.doesStringAdhere(nonEmptyString));
+        Predicate<String> isStringEmpty = str -> str.isEmpty();
+        Assertions.assertTrue(isStringEmpty.test(emptyString));
+        Assertions.assertFalse(isStringEmpty.test(nonEmptyString));
     }
+
 }
 
 
